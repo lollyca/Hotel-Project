@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "xiosbase": "cpp",
+        "string": "cpp",
+        "iomanip": "cpp"
+    }
+}

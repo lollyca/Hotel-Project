@@ -1,0 +1,28 @@
+11/27/22
+101       Courtyard Heloisa   
+236       Deluxe    Gustavo   
+301       Penthouse Luiz      
+&&&
+11/28/22
+201       Scenic    Rebeca    
+301       Penthouse Daniel    
+&&&
+11/26/22
+101  Courtyard      Andrew    
+102  Courtyard      Ben       
+&&&
+11/25/22
+301  Penthouse      Heloisa   
+302  Penthouse      Rebecca   
+&&&
+
+1
+101  Courtyard      Heloisa Santos
+&&&
+
+11/23/22
+101  Courtyard      Heloisa Santos
+236  Deluxe         Felipe Mullen
+301  Penthouse      Daniel Mullen
+&&&
+

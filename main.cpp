@@ -1,74 +1,67 @@
-#include "Header.h"
+#include <iostream>
+#include <fstream>
+#include "HotelManager.h"
 using namespace std;
 
 int main()
 {
-	int totalRooms = 122;
-	const int COUT = 70;
-	const int SCENIC = 35;
-	const int SUITE = 15;
-	const int PENT = 2;
-	int date, reservationInput;
+	HotelManager hotelManager;
+	hotelManager.displayInventory();
 
+	fstream myFile;
 
-	Room arrCourtyard[COUT];
-	Room arrScenic[SCENIC];
-	Room arrSuite[SUITE];
-	Room arrPenthouse[PENT];
+	myFile.open("hotelTest.txt", ios::out);
 
-
-	cout << "Enter today's date ---> ";
-	cin >> date;
-
-	arrCourtyard->setName(arrCourtyard, COUT, "Courtyard");
-	arrScenic->setName(arrScenic, SCENIC, "Scenic");
-	arrSuite->setName(arrSuite, SUITE, "Deluxe Suite");
-	arrPenthouse->setName(arrPenthouse, PENT, "Penthouse");
-
-	arrCourtyard->setPrice(arrCourtyard, COUT, 125);
-	arrScenic->setPrice(arrScenic, SCENIC, 145);
-	arrSuite->setPrice(arrSuite, SUITE, 350);
-	arrPenthouse->setPrice(arrPenthouse, PENT, 1135);
-
-	arrCourtyard->setCondition(arrCourtyard, COUT);
-	arrScenic->setCondition(arrScenic, SCENIC);
-	arrSuite->setCondition(arrSuite, SUITE);
-	arrPenthouse->setCondition(arrPenthouse, PENT);
-
-
-	cout << "Inventory" << endl;
-	cout << "Courtyard - " << COUT << " - $" << arrCourtyard->getRoomPrice() << " a night" << endl;
-	cout << "Scenic - " << SCENIC << " - $" << arrScenic->getRoomPrice() << " a night" << endl;
-	cout << "Deluxe Suite - " << SUITE << " - $" << arrSuite->getRoomPrice() << " a night" << endl;
-	cout << "Penthouse - " << PENT << " - $" << arrPenthouse->getRoomPrice() << " a night" << endl;
-	cout << "\n";
-
-	cout << "Reservation system: " << endl;
-	cout << "What room would you like to reserve? " << endl;
-	cout << "1 --- Courtyard - 70 - $125 a night" << endl;
-	cout << "2 --- Scenic - 35 - $145 a night" << endl;
-	cout << "3 --- Deluxe Suite - 15 - $350 a night" << endl;
-	cout << "4 --- Penthouse - 2 - $1135 a night" << endl;
-	cin >> reservationInput;
-
-	switch (reservationInput)
+	if (!myFile.is_open())
 	{
-	case 1:
-		arrCourtyard->setReservation(arrCourtyard);
-		break;
-	case 2:
-		arrScenic->setReservation(arrScenic);
-		break;
-	case 3:
-		arrSuite->setReservation(arrSuite);
-		break;
-	case 4:
-		arrPenthouse->setReservation(arrPenthouse);
-		break;
+		cout << "File was not open" << endl;
+		return 0;
+		myFile.close();
+	}
+	else
+	{
+		myFile << "Welcome to the Hotel Helozinha!" << endl;
+		myFile.close();
 	}
 
+	string managerChoice;
+	do
+	{
+		cout << "\n";
+		cout << "\n";
+		cout << "\t   Menu:" << endl;
+		cout << "-------------------------------------------" << endl;
+		cout << "Please choose one option or press Q to QUIT." << endl;
+		cout << "1 - Make a reservation" << endl;
+		cout << "2 - Show today's inventory of the day" << endl;
+		cout << "3 - Save data" << endl;
+		cout << "4 - View existing bookings" << endl;
+		cout << "Q - Quit" << endl;
+		cin >> managerChoice;
+
+		if (managerChoice == "1")
+		{
+			hotelManager.roomReservation();
+		}
+		else if (managerChoice == "2")
+		{
+			hotelManager.getTotal();
+		}
+		// criar um close the day
+		else if (managerChoice == "3")
+		{
+			hotelManager.saveData();
+		}
+		else if (managerChoice == "4")
+		{
+			cout << "Enter a date to view bookings\n";
+			string date;
+			cin >> date;
+			hotelManager.showDay(date);
+		}
+
+	} while (managerChoice != "Q");
+
+	cout << "\n";
+	cout << "Have a good day!" << endl;
 }
-
-
-
-
